@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Priyanka Jena | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #1e1e2f;
+      --bg-light: #f7f7f7;
+      --text-dark: #f1f1f1;
+      --text-light: #222;
+      --accent: #4a00e0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light-mode {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      animation: moveBG 30s linear infinite;
+    }
+
+    @keyframes moveBG {
+      from { background-position: 0 0; }
+      to { background-position: 100px 100px; }
+    }
+
+    nav {
+      background-color: #2d2d44;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #b0aaff;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
+      border-bottom: 2px solid #fff;
+    }
+
+    #toggleMode {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(to right, #8e2de2, #4a00e0);
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.1);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #fff;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin: 20px 0 10px;
+    }
+
+    .btn {
+      background: #fff;
+      color: #4a00e0;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      margin: 8px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #e0dfff;
+      transform: scale(1.05);
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn ease-in 1s forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .skills div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .skills i {
+      font-size: 2.5rem;
+      color: #f0f0f0;
+    }
+
+    .skills p {
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+
+    .skills div:hover {
+      transform: scale(1.15);
+      color: #ffe600;
+    }
+
+    body.light-mode .skills i {
+      color: #333;
+    }
+
+    .project {
+      background-color: #2d2d44;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .project:hover {
+      transform: scale(1.02);
+    }
+
+    .project h3 {
+      color: #ffe600;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: #ddd;
+      margin-bottom: 10px;
+    }
+
+    .project a {
+      color: #aaccff;
+      text-decoration: underline;
+    }
+
+    .socials {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      font-size: 1.2rem;
+      color: #b0aaff;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .socials a:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    footer {
+      background-color: #2d2d44;
+      text-align: center;
+      padding: 20px;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    #scrollToTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #4a00e0;
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: none;
+    }
+
+    #scrollToTopBtn:hover {
+      background-color: #6a0ee0;
+    }
+  </style>
+</head>
+<body>
+  <button id="toggleMode">Toggle Mode</button>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <img src="your-photo.jpg" alt="Profile" class="profile-img" />
+    <h1>Priyanka Jena</h1>
+    <h2>Web Developer | Python Enthusiast | Learner</h2>
+    <a class="btn" href="resume.pdf" download>Download Resume</a>
+  </header>
+
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p class="about-text">
+      Aspiring Web Developer & Data Enthusiast! I’m a recent graduate with a passion for turning ideas into interactive,
+      user-friendly web applications. With strong foundational skills in <strong>Python, HTML, CSS, JavaScript, and SQL</strong>, I’m
+      currently expanding into <strong>Data Science</strong>, exploring data analysis and machine learning. I’m eager to contribute to
+      meaningful projects, solve real-world problems, and grow as a developer in innovative, collaborative environments. 🌱
+    </p>
+  </section>
+
+  <section id="skills" class="fade-in">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><i class="fab fa-html5"></i><p>HTML5</p></div>
+      <div><i class="fab fa-css3-alt"></i><p>CSS3</p></div>
+      <div><i class="fab fa-js"></i><p>JavaScript</p></div>
+      <div><i class="fab fa-python"></i><p>Python</p></div>
+      <div><i class="fas fa-database"></i><p>SQL</p></div>
+      <div><i class="fab fa-git-alt"></i><p>Git</p></div>
+      <div><i class="fab fa-github"></i><p>GitHub</p></div>
+      <div><i class="fas fa-code"></i><p>VS Code</p></div>
+    </div>
+  </section>
+
+  <section id="projects" class="fade-in">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Portfolio Website</h3>
+      <p>A responsive portfolio built using HTML, CSS, and JavaScript. Includes smooth scrolling, hover effects, and interactive UI.</p>
+      <a href="https://your-netlify-link.netlify.app" target="_blank">Live Demo</a>
+    </div>
+    <div class="project">
+      <h3>Customer Satisfaction Prediction</h3>
+      <p>A machine learning project analyzing customer feedback using Python, Pandas, and Scikit-learn to predict satisfaction levels.</p>
+      <a href="https://github.com/yourusername/customer-satisfaction" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project">
+      <h3>Hand Gesture Recognition System</h3>
+      <p>Developed using OpenCV and MediaPipe, this application detects and interprets hand gestures in real-time.</p>
+      <a href="https://github.com/yourusername/hand-gesture-recognition" target="_blank">View on GitHub</a>
+    </div>
+  </section>
+
+  <section id="contact" class="fade-in">
+    <h2 style="text-align: center;">Let's Connect</h2>
+    <div class="socials">
+      <a href="mailto:jenapriyanka444@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/priyanka-jena-69687525b" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Priyanka Jena. All Rights Reserved.
+  </footer>
+
+  <button id="scrollToTopBtn">&#8679;</button>
+
+  <script>
+    // Toggle Dark/Light Mode
+    document.getElementById('toggleMode').addEventListener('click', function () {
+      document.body.classList.toggle('light-mode');
+    });
+
+    // Scroll to top button
+    const scrollBtn = document.getElementById('scrollToTopBtn');
+    window.onscroll = function () {
+      scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    };
+    scrollBtn.onclick = function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
+</body>
+</html>
+
+
+
+
